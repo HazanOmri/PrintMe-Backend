@@ -18,8 +18,8 @@ async function checkout(req, res) {
                     quantity: 1
                 }
             }),
-            success_url: `${process.env.SERVER_URL}/success.html`,
-            cancel_url: `${process.env.SERVER_URL}/CANCEL.html`
+            success_url: `http://localhost:3000/?#/success`,
+            cancel_url: `http://localhost:3000/?#/cancel`
         })
         console.log('session', session)
         res.json({ url: session })
