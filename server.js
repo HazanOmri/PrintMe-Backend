@@ -17,9 +17,12 @@ if (process.env.NODE_ENV === 'production') {
     app.use(cors(corsOptions))
 }
 
-const router = require('./checkout/router')
+const checkoutRoutes = require('./api/checkout/checkout.routes')
+const authRoutes = require('./api/auth/auth.routes')
 
-app.use('/api/checkout', router)
+
+app.use('/api/checkout', checkoutRoutes)
+app.use('/api/auth', authRoutes)
 
 
 const storeItems = new Map([

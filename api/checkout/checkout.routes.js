@@ -1,5 +1,5 @@
 const express = require('express')
-const { checkout } = require('./controller')
+const { checkout } = require('./checkout.controller')
 
 const router = express.Router()
 
