@@ -1,65 +1,59 @@
-const tests = [
-    'אביב 2023',
-    'חורף 2022',
-    'סתיו 2022',
-    'קיץ 2022',
-    'אביב 2022',
-    'חורף 2021',
-    'סתיו 2021',
-    'קיץ 2021',
-    'אביב 2021',
-    'חורף 2020',
-    'סתיו 2020',
-    'קיץ 2020',
-    'אביב 2020',
-    'חורף 2019',
-    'סתיו 2019',
-    'קיץ 2019',
-    'אביב 2019',
-    'חורף 2018',
-    'סתיו 2018',
-    'קיץ 2018',
-    'אביב 2018',
-    'דצמבר 2017',
-    'ספטמבר 2017',
-    'יולי 2017',
-    'אפריל 2017',
-    'פבואר 2017',
-    'דצמבר 2016',
-    'ספטמבר 2016',
-    'יולי 2016',
-    'אפריל 2016',
-    'פבואר 2016',
-    'דצמבר 2015',
-    'ספטמבר 2015',
-    'יולי 2015',
-    'אפריל 2015',
-    'פבואר 2015',
-    'דצמבר 2014',
-    'אוקטובר 2014',
-    'יולי 2014',
-    'אפריל 2014',
-    'פבואר 2014',
-    'דצמבר 2013',
-    'יולי 2013',
-]
-
 module.exports = {
-    get,
-    getTests
+    getLineItems
 }
 
-// function get(id) {
-//     let item
-//     tests.forEach(testId => {
-//         if (id === testId) item = testId
-//     })
-//         return {
-//             id,
-//             price: 5
-//         }
-// }
+function getLineItems(items) {
+    return items.map(item => {
+        if (item.charAt(0) === 'o') {
+            if (item.charAt(1) === '1') {
+                return {
+                    price_data: {
+                        currency: 'ils',
+                        product_data: {
+                            name: item
+                        },
+                        unit_amount: 5000,
+                    },
+                    quantity: 1
+                }
+            }
+            if (item.charAt(2) === '2') {
+                return {
+                    price_data: {
+                        currency: 'ils',
+                        product_data: {
+                            name: item
+                        },
+                        unit_amount: 6000,
+                    },
+                    quantity: 1
+                }
+            }
+            if (item.charAt(3) === '3') {
+                return {
+                    price_data: {
+                        currency: 'ils',
+                        product_data: {
+                            name: item
+                        },
+                        unit_amount: 7000,
+                    },
+                    quantity: 1
+                }
+            }
+        }
 
-function getTests() {
-    return tests
+        else {
+            return {
+                price_data: {
+                    currency: 'ils',
+                    product_data: {
+                        name: item
+                    },
+                    unit_amount: 500,
+                },
+                quantity: 1
+            }
+        }
+    })
 }

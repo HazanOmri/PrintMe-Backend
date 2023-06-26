@@ -1,4 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_KEY)
+const checkoutService = require('./checkout.service')
 
 async function checkout(req, res) {
     try {
@@ -6,22 +7,10 @@ async function checkout(req, res) {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             mode: 'payment',
-            line_items: Object.keys(req.body).map(item => {
-                return {
-                    price_data: {
-                        currency: 'ils',
-                        product_data: {
-                            name: item
-                        },
-                        unit_amount: 500,
-                    },
-                    quantity: 1
-                }
-            }),
+            line_items: checkoutService.getLineItems(Object.keys(req.body)),
             success_url: `http://localhost:3000/?#/success`,
             cancel_url: `http://localhost:3000/?#/cancel`
         })
-        console.log('session', session)
         res.json({ url: session })
     } catch (err) {
         res.status(500).json({ error: err.messege })
