@@ -10,7 +10,7 @@ function getLineItems(items) {
                     price_data: {
                         currency: 'ils',
                         product_data: {
-                            name: item
+                            name: 'אוגדן 1'
                         },
                         unit_amount: 5000,
                     },
@@ -22,7 +22,7 @@ function getLineItems(items) {
                     price_data: {
                         currency: 'ils',
                         product_data: {
-                            name: item
+                            name: 'אוגדן 2'
                         },
                         unit_amount: 6000,
                     },
@@ -34,7 +34,7 @@ function getLineItems(items) {
                     price_data: {
                         currency: 'ils',
                         product_data: {
-                            name: item
+                            name: 'אוגדן 3'
                         },
                         unit_amount: 7000,
                     },
