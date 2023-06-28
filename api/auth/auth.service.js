@@ -14,14 +14,13 @@ module.exports = {
 async function login(username, password) {
     logger.debug(`auth.service - login with username: ${username}`)
     let user
-    if (username === process.env.ADMIN_USERNAME) user = { fullname: 'רועי חזן', cart: [], username: process.env.ADMIN_USERNAME }
+    if (username === process.env.ADMIN_USERNAME) user = { fullname: 'רועי חזן', cart: [], username: process.env.ADMIN_USERNAME, isAdmin: true }
     if (!user) return Promise.reject('Invalid username or password')
 
     // console.log('password ,process.env.ADMIN_PASSWORD', password, process.env.ADMIN_PASSWORD)
     // const match = await bcrypt.compare(password, process.env.ADMIN_PASSWORD)
     // console.log('match', match)
     if (password !== process.env.ADMIN_PASSWORD) return Promise.reject('Invalid username or password')
-    console.log('3')
 
     return user
 }

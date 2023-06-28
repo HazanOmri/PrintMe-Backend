@@ -19,21 +19,17 @@ if (process.env.NODE_ENV === 'production') {
 
 const checkoutRoutes = require('./api/checkout/checkout.routes')
 const authRoutes = require('./api/auth/auth.routes')
+const adminRoutes = require('./api/admin/admin.routes')
 
 
 app.use('/api/checkout', checkoutRoutes)
 app.use('/api/auth', authRoutes)
-
-
-const storeItems = new Map([
-    [1, { price: 5, name: 'one test' }],
-    [2, { price: 50, name: 'ogdan a' }]
-])
-
+app.use('/api/admin', adminRoutes)
 
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
+
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030
 http.listen(port, () => {
