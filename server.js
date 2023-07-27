@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const path = require('path')
 const http = require('http').createServer(app)
 
 app.use(express.json())
